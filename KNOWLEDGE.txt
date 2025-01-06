@@ -1,0 +1,19 @@
+KNOWLEDGE
+
+💢 sentence: an assertion about the world in a knowledge representing language
+Propositional logic -> statements about the world which can be either true or false.
+	Logical connective: OR, AND, NOT, Implication, Bi-Implication
+💢 model: assignment of a truth value to every propositional symbol -> in other words creates a possible world.
+Knowledge base: a set of sentences that the AI knows
+Entailment: If alpha entails Beta -> then if alpha is true then beta has to be true.
+(entailment sounds like implication by definition but is basically a stronger connection than implication)
+(there is no case of vacuously true)
+
+Model checking algo: enumerate all possible states our world and check whatever logical operation manually. For example if we have to check if AB |= C (AB entails C)
+Then we will enumerate all possible states of A and B and in all the models where AB is true if C is true then we know that AB entails C
+💢 inference: Making a statement using the other statement.
+
+Basically the entirety of boolean logic and boolean algebra. Already covered in DSM course in colege.
+
+Inference by resolution:
+For example to check resolution like AB |= C we will prove that AB ^ !C is a contradiction

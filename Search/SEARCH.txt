@@ -1,0 +1,63 @@
+SEARCH
+
+💢 agent: perceives environment and acts upon that environment.
+💢 state: configuration of an agent.
+initial state: state where agent begins.
+💢 actions: a(s) is a set of actions that can be executed in a state S.
+
+💢 transition model: description of what states results on performing an applicable action in any state
+can also be thought of as a function Result(s,a)
+
+💢 goal test: a function/way to determine whether a given state is a goal state.
+💢 path cost: numerical cost
+
+💢 node: data structure which keeps a track of a state.
+	parent node (node that generated this node)
+	an action
+	a path cost
+
+approach of a search problem:
+	Frontier contains the initial state.
+
+	repeat:
+		if frontier node is empty no solution
+		remove a node from frontier
+		if node is goal state return solution
+		expand node and all possible actions and the result to frontier (UNIQUE)
+
+	💢STACK -> LIFO
+		Depth First Search -> always expands on the deepest node of the frontier
+
+	💢Queue -> FIFO
+		Breadth First Search -> expand on the shallowest node of the frontier
+
+
+	💢Heuristic function -> h(n) -> function which estimates how close we are to a goal.
+	Greedy Best first search -> Uses only the heuristic function
+	A* search -> h(n) + g(n) which uses not only heuristic but also another g(n) which is the
+	number of steps I took to get there. This is useful when:
+		-h(n) is admissible [never overestimates the true cost]
+		-h(n) is consistent so h(n) <= h(n')
+
+
+Adversarial decisions:
+	💢 MiniMax algorithm:
+	Max playertries to maximize the score and the min player tries to minimize the score.
+
+	What are the components of such a game:
+		S0 -> initial state
+		Player-> returns what player moves in state s
+		Action -> return legal move in state s
+		result(s,a) -> returns the state after action a is taken in state s
+		terminal(s) -> check if state s is a terminal state.
+		💢 utility -> finds a numeric value for terminal state.
+	But for any small game also the recursion tree is very big and going to be a problem to compute:
+	solution: 💢Alpha-Beta Pruning:
+		-- alpha and beta and 2 values we are supposed to keep track of. in our case the values of the best that i can do and the worst that i can do.
+		-- pruning is if I have a very large search tree so I can based on alpha and beta values chose not to go in the depth of some of the trees then it is called alpha beta pruning
+
+	💢 Depth limited Mini-max:
+		Normally mini-max is depth unlimited.
+		💢 evaluation function
+			we need a way to find who is winning without actually reaching the terminal state.
+			How good a game state happens to be.
