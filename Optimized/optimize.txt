@@ -1,0 +1,62 @@
+💢 Optimisation problems:  Chosing the best options from a set of options
+
+💢 Local Search: search algorithms that maintains a single node and searches by moving to the neighbouring
+node.
+Local search comes up in problems where we need to figure out what the solution and what the goal is.
+Eg: We have a grid of houses and we need to place 2 hospital with an objective such that there is a minimal distance between the hospitals and the houses
+
+💢 State space landscape: A vertical bars represents a state our world can be in.
+The height of the vertical bar represents some function/ value of that state.
+We can do one of 2 things:
+    find the global maximum in which case the function is called an objective function.
+    find the global minimum in which case the function is caleld the cost function.
+
+Hill climbing: go to my larger neighbour until I am larger than my both neighbours.
+pseudocode:
+def HillC(problem):
+    current = intial state of problem
+    repeat:
+        neighbour = highest values neighbour of the current.
+        if neighbour not better than current state:
+            return current
+        current = neighbour
+
+but we will notice we will get stuck in case of local maximas.
+hill climbing variants:
+    steepest ascent -> choose the highest valued neighbour
+    stochastic -> chose randomly from one of the higher valued neigbours
+    first choice -> chose the first higher valued neighbour
+    random restart -> restart the search from a random state
+    local beam search -> chose k highest valued neighbours.
+    
+    
+Simulated Annealing:
+	Can be related with a physical system when heated the particles move with very high speeds but over time as it cools down it becomes calmer
+	-start making more random moves in the beginning higher chance of accepting neighbors which are worse than current state (HIGH TEMP)
+	- later on lower temp so less likely to accept bad neighbors
+	
+	pseudo code:
+	
+	fn simulated_annealing(problem,max):
+		current = initial state of problem
+		for t = 1 to max:
+			T = temp(t)
+			neighbour = random neighbour
+			del E = how much better is than current
+			if delE > 0:
+				current = neighbour
+			   with probability e ^ (delE/T)
+		return current
+
+
+Traveling salesman:
+	I would like to find a route through all cities and ends up back where I start and minimize the path.
+	Computational expensive
+	NP complete
+	Neighbouring config is defined in such a way that I connect 2 nodes which were initally not connected. 
+	
+Linear Programming:
+	Simplex 
+	Interior point
+	
+			
